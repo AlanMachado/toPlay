@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: fidelidade
+      POSTGRES_USER: fidelidade
+      POSTGRES_PASSWORD: fidelidade
+    ports:
+      - "5432:5432"
+    volumes:
+      - dados:/var/lib/postgresql/data
+
+volumes:
+  dados:

@@ -1,0 +1,30 @@
+/* Cores do app. Troque aqui para mudar a identidade visual. */
+:root {
+  --ion-color-primary: #3b5bdb;
+  --ion-color-primary-rgb: 59, 91, 219;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3450c1;
+  --ion-color-primary-tint: #4f6bdf;
+}
+
+.saldo-cartao {
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.saldo-valor {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin: 4px 0;
+}
+
+.pontos-positivos {
+  color: var(--ion-color-success);
+  font-weight: 600;
+}
+
+.pontos-negativos {
+  color: var(--ion-color-danger);
+  font-weight: 600;
+}
