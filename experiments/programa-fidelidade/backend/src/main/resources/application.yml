@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/fidelidade}
+    username: ${DB_USER:fidelidade}
+    password: ${DB_PASSWORD:fidelidade}
+  jpa:
+    # O schema é controlado pelo Flyway (src/main/resources/db/migration).
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
