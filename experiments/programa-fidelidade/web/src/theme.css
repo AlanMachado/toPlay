@@ -8,23 +8,48 @@
   --ion-color-primary-tint: #4f6bdf;
 }
 
-.saldo-cartao {
+.balance-card {
   text-align: center;
   padding: 24px 16px;
 }
 
-.saldo-valor {
+.balance-value {
   font-size: 2.6rem;
   font-weight: 700;
   margin: 4px 0;
 }
 
-.pontos-positivos {
+.points-positive {
   color: var(--ion-color-success);
   font-weight: 600;
 }
 
-.pontos-negativos {
+.points-negative {
   color: var(--ion-color-danger);
   font-weight: 600;
+}
+
+.voucher-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.result-table th,
+.result-table td {
+  padding: 6px 4px;
+  text-align: right;
+  border-bottom: 1px solid var(--ion-color-light-shade);
+}
+
+.result-table th:first-child,
+.result-table td:first-child {
+  text-align: left;
 }

@@ -11,7 +11,7 @@ import '@ionic/react/css/typography.css'
 import '@ionic/react/css/padding.css'
 import '@ionic/react/css/flex-utils.css'
 import '@ionic/react/css/palettes/dark.system.css'
-import './tema.css'
+import './theme.css'
 
 setupIonicReact()
 
