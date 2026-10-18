@@ -16,7 +16,7 @@ import {
 } from '@ionic/react'
 import { useState } from 'react'
 import { api, type ItemCatalogo } from '../api'
-import { formatarPontos } from '../formatos'
+import { formatarPontos, formatarReais } from '../formatos'
 import { useClienteLogado } from '../sessao'
 
 export default function Catalogo() {
@@ -77,8 +77,19 @@ export default function Catalogo() {
             <IonItem key={item.id}>
               <IonLabel>
                 <h3>{item.nome}</h3>
+                <p>
+                  {item.parceiroNome} · {formatarReais(item.preco)}
+                </p>
                 {item.descricao && <p>{item.descricao}</p>}
-                <IonNote>{formatarPontos(item.custoPontos)} pontos</IonNote>
+                <IonNote>
+                  {item.emPromocao && (
+                    <>
+                      <IonBadge color="warning">Promoção</IonBadge>{' '}
+                      <s>{formatarPontos(item.custoPontosSemPromocao)}</s>{' '}
+                    </>
+                  )}
+                  <strong>{formatarPontos(item.custoPontos)} pontos</strong>
+                </IonNote>
               </IonLabel>
               <IonButton slot="end" disabled={saldo < item.custoPontos} onClick={() => confirmar(item)}>
                 Resgatar

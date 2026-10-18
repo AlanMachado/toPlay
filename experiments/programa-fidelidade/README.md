@@ -62,7 +62,7 @@ web/src/
 | `GET` | `/api/clientes/{id}/extrato` | Últimos 50 lançamentos |
 | `GET` | `/api/parceiros` | Lista parceiros |
 | `POST` | `/api/parceiros/{id}/compras` | Registra compra `{ clienteId, valorCompra: "149.90" }` e credita pontos |
-| `GET` | `/api/catalogo` | Itens resgatáveis |
+| `GET` | `/api/catalogo` | Itens resgatáveis, com o custo em pontos já calculado |
 | `POST` | `/api/resgates` | Resgata `{ clienteId, itemId }` |
 
 ## Regras de negócio e de dinheiro
@@ -75,6 +75,14 @@ web/src/
   Ex.: R$ 149,90 × 2 = 299,8 → 299 pontos.
 - **Valor devido pelo parceiro** = pontos × preço por ponto, com **arredondamento bancário**
   (`HALF_EVEN`) em 2 casas. Ex.: 3.703 × R$ 0,035 = 129,605 → R$ 129,60.
+- **Custo de um item em pontos não é gravado:** cada item tem um preço em reais e pertence a
+  um parceiro, e o custo é calculado na hora como preço ÷ preço do ponto do parceiro,
+  **arredondado para cima**. Ex.: R$ 50,00 ÷ R$ 0,03 = 1.666,7 → 1.667 pontos. Se o parceiro
+  mudar o preço do ponto, o catálogo inteiro dele se ajusta sozinho.
+- **Promoção da plataforma:** um item pode ter `pontos_promocionais`, um custo fixo que
+  substitui o calculado. O app mostra o preço normal riscado.
+- **O resgate grava os pontos cobrados** e o valor em reais do item (o que a plataforma
+  repassa ao parceiro), então mudanças de preço futuras não alteram resgates passados.
 - **Valores em dinheiro trafegam no JSON como texto** (`"149.90"`), e o front nunca faz
   conta com dinheiro: só exibe o que o backend calculou.
 - **Resgates travam o cliente** no banco (`SELECT ... FOR UPDATE`), então dois resgates

@@ -12,7 +12,18 @@ export type Lancamento = {
   descricao: string
   criadoEm: string
 }
-export type ItemCatalogo = { id: number; nome: string; descricao: string | null; custoPontos: number }
+export type ItemCatalogo = {
+  id: number
+  nome: string
+  descricao: string | null
+  parceiroId: number
+  parceiroNome: string
+  preco: string
+  /** Calculado pelo backend: preço do item ÷ preço do ponto do parceiro (ou valor promocional). */
+  custoPontos: number
+  custoPontosSemPromocao: number
+  emPromocao: boolean
+}
 export type Parceiro = { id: number; nome: string; precoPorPonto: string; pontosPorReal: string }
 export type ResultadoCompra = {
   pontosGanhos: number
